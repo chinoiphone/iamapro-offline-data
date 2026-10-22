@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23T00:45:33Z",
+  "updatedAt": "2026-10-22T08:37:56Z",
   "packs": [
     {
       "id": "us-district-of-columbia",
@@ -29,14 +29,14 @@
       "version": "2026.10.23",
       "tag": "us-florida-2026.10.23",
       "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-florida-2026.10.23/us-florida.iamapack.zip",
-      "byteCount": 602982632,
-      "sha256": "675b3f6f3a080afedea5291baa259ee9ebb7b59244a5c9a9f8c1dfc0ae8c4f44",
-      "installedByteCount": 1759749446,
+      "byteCount": 572847461,
+      "sha256": "38e0dfd4ff4a50c241572530668c0157d5644071533d1e80cfacae685bd0e8cf",
+      "installedByteCount": 1603491142,
       "bounds": {
-        "minimumLatitude": 19.1044303,
-        "minimumLongitude": -87.7829944,
-        "maximumLatitude": 31.9334444,
-        "maximumLongitude": -78.7738568
+        "minimumLatitude": 24.5319001,
+        "minimumLongitude": -87.52407598,
+        "maximumLatitude": 31.017901,
+        "maximumLongitude": -80.01753902222224
       },
       "counts": {
         "places": 270711,
