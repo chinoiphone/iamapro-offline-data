@@ -54,14 +54,24 @@ jobs:
     needs: build
     if: always()
     runs-on: ubuntu-latest
+    # De una en una: dos preparaciones a la vez se pisaban el catálogo.
+    concurrency:
+      group: iamapro-catalog
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
       - name: Catálogo
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          python3 scripts/update_catalog.py
           git config user.name "IAmapro"
           git config user.email "iamapro@users.noreply.github.com"
-          git add catalog.json
-          git commit -m "Catálogo de paquetes" && git push || echo "Sin cambios en el catálogo"
+          for attempt in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 scripts/update_catalog.py
+            git add catalog.json
+            git diff --cached --quiet && { echo "Sin cambios en el catálogo"; break; }
+            git commit -q -m "Catálogo de paquetes"
+            git push -q origin HEAD:main && break
+            sleep 10
+          done
