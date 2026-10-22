@@ -103,6 +103,20 @@ def poi_category(tags):
     return None
 
 
+def trimmed_bounds(latitudes, longitudes):
+    """El rectángulo del estado sin los puntos sueltos (boyas, barcos o
+    errores en el mar): del 0,02 % al 99,98 % de las coordenadas, con un
+    margen de unos 2 km."""
+    if not latitudes:
+        return [0.0, 0.0, 0.0, 0.0]
+    lats = sorted(latitudes)
+    lons = sorted(longitudes)
+    cut = max(int(len(lats) * 0.0002), 0)
+    margin = 0.02
+    return [lats[cut] - margin, lons[cut] - margin,
+            lats[-1 - cut] + margin, lons[-1 - cut] + margin]
+
+
 def main():
     source, target, stats_path = sys.argv[1:4]
 
@@ -141,7 +155,8 @@ def main():
     seen_streets = set()
     seen_addresses = set()
     counts = {"places": 0, "streets": 0, "addresses": 0}
-    bounds = [90.0, 180.0, -90.0, -180.0]
+    latitudes = []
+    longitudes = []
     rows = []
 
     def flush():
@@ -161,7 +176,8 @@ def main():
         highway = tags.get("highway")
         is_way = tags.get("@type") == "way"
 
-        bounds = [min(bounds[0], lat), min(bounds[1], lon), max(bounds[2], lat), max(bounds[3], lon)]
+        latitudes.append(lat)
+        longitudes.append(lon)
 
         if name and highway and is_way and highway not in STREET_SKIP:
             key = (name.lower(), round(lat, 2), round(lon, 2))
@@ -204,13 +220,14 @@ def main():
             name, street, city,
             content = 'places', content_rowid = 'id',
             tokenize = "unicode61 remove_diacritics 2",
-            prefix = '2 3'
+            detail = column
         );
         INSERT INTO places_fts (places_fts) VALUES ('rebuild');
         CREATE INDEX places_lat_lon ON places (lat, lon);
         CREATE INDEX places_kind_category ON places (kind, category);
         """
     )
+    bounds = trimmed_bounds(latitudes, longitudes)
     db.executemany("INSERT INTO info (key, value) VALUES (?, ?)", [
         ("schema", "1"),
         ("bounds", json.dumps({"minimumLatitude": bounds[0], "minimumLongitude": bounds[1],
