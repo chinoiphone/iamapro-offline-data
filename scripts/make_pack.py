@@ -55,11 +55,12 @@ def main():
         stats = json.load(handle)
 
     files = []
+    # Los mismos tipos de archivo que conoce la app (OfflinePackManifest);
+    # NOTICE.txt va en el paquete pero no en la lista.
     for relative, component in [
         ("search/search.sqlite", "search"),
         ("routing/valhalla_tiles.tar", "routing"),
         ("routing/valhalla.json", "routing"),
-        ("NOTICE.txt", "notice"),
     ]:
         path = os.path.join(pack, relative)
         files.append({
@@ -67,7 +68,7 @@ def main():
             "relativePath": relative,
             "byteCount": os.path.getsize(path),
             "sha256": sha256(path),
-            "required": component != "notice",
+            "required": True,
             "contentVersion": version,
         })
 
@@ -76,6 +77,7 @@ def main():
         "regionID": region,
         "regionName": name,
         "packVersion": now.strftime("%Y.%m.%d.%H%M"),
+        "dataRevision": files[1]["sha256"][:16],
         "createdAt": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "minimumAppBuild": 1,
         "bounds": stats["bounds"],
