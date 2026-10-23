@@ -1,7 +1,28 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23T00:21:24Z",
+  "updatedAt": "2026-10-23T00:45:33Z",
   "packs": [
+    {
+      "id": "us-district-of-columbia",
+      "name": "District of Columbia",
+      "version": "2026.10.23",
+      "tag": "us-district-of-columbia-2026.10.23",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-district-of-columbia-2026.10.23/us-district-of-columbia.iamapack.zip",
+      "byteCount": 22151450,
+      "sha256": "7b930b6a5bcc610ff1159fbdb459aed0d004747550b676093b78c459e0096d93",
+      "installedByteCount": 67372371,
+      "bounds": {
+        "minimumLatitude": 38.79166304615384,
+        "minimumLongitude": -77.137525,
+        "maximumLatitude": 39.01397872857143,
+        "maximumLongitude": -76.8904073
+      },
+      "counts": {
+        "places": 19910,
+        "streets": 4790,
+        "addresses": 141622
+      }
+    },
     {
       "id": "us-florida",
       "name": "Florida",
