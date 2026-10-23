@@ -1,5 +1,27 @@
 {
   "schemaVersion": 1,
-  "updatedAt": null,
-  "packs": []
+  "updatedAt": "2026-10-23T00:21:24Z",
+  "packs": [
+    {
+      "id": "us-florida",
+      "name": "Florida",
+      "version": "2026.10.23",
+      "tag": "us-florida-2026.10.23",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-florida-2026.10.23/us-florida.iamapack.zip",
+      "byteCount": 602982632,
+      "sha256": "675b3f6f3a080afedea5291baa259ee9ebb7b59244a5c9a9f8c1dfc0ae8c4f44",
+      "installedByteCount": 1759749446,
+      "bounds": {
+        "minimumLatitude": 19.1044303,
+        "minimumLongitude": -87.7829944,
+        "maximumLatitude": 31.9334444,
+        "maximumLongitude": -78.7738568
+      },
+      "counts": {
+        "places": 270711,
+        "streets": 470749,
+        "addresses": 2025508
+      }
+    }
+  ]
 }
