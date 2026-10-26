@@ -77,7 +77,7 @@ def fts_query(text):
     groups = []
     for word in words(text)[:8]:
         variants = [word] + ABBREVIATIONS.get(word, [])
-        terms = [f'"{v}"' if v in SHORT_FORMS else f'"{v}"*' for v in variants]
+        terms = [f'"{v}"' if v in SHORT_FORMS or len(v) == 1 else f'"{v}"*' for v in variants]
         groups.append(terms[0] if len(terms) == 1 else "(" + " OR ".join(terms) + ")")
     return " AND ".join(groups) or None
 
@@ -101,34 +101,64 @@ def key(row):
     return f"{row['name'].lower()}|{int(row['lat'] * 2000)}|{int(row['lon'] * 2000)}"
 
 
+# USOfflineSearch.placeProminence
+PLACE_PROMINENCE = {
+    "place=city": 45, "place=town": 35, "place=village": 22, "place=suburb": 15,
+    "place=hamlet": 10, "place=neighbourhood": 10, "place=quarter": 10, "place=island": 10,
+}
+COLUMNS = "p.id, p.name, p.kind, p.category, p.lat, p.lon"
+
+
+def name_score(name, wanted):
+    """USOfflineSearch.nameScore: 0 igual, 10 empieza igual, 18 todas las
+    palabras, 30 solo en la dirección o la ciudad."""
+    name = expanded(name)
+    if name == wanted:
+        return 0
+    if name.startswith(wanted):
+        return 10
+    name_words = name.split()
+    if all(any(n.startswith(w) for n in name_words) for w in wanted.split()):
+        return 18
+    return 30
+
+
 def search(db, text, lat, lon, limit=25):
-    """USOfflineSearch.search: bm25 más la distancia, y luego el parecido."""
+    """USOfflineSearch.search: lo más cercano, lo más parecido del estado y
+    las ciudades con ese nombre; el parecido del nombre más la distancia."""
     query = fts_query(text)
     if not query:
         return []
     wanted = expanded(text)
+    match = f"- {{city}} : ({query})" if len(words(text)) == 1 else query
+    cosine = max(math.cos(math.radians(lat)), 0.2)
+    lat_delta, lon_delta = 0.5, 0.5 / cosine
+    towns = ", ".join(f"'{t}'" for t in sorted(PLACE_PROMINENCE))
     rows = db.execute(
-        """
-        SELECT p.id, p.name, p.kind, p.category, p.lat, p.lon
-        FROM places_fts f JOIN places p ON p.id = f.rowid
-        WHERE places_fts MATCH ?
-        ORDER BY bm25(places_fts, 10.0, 4.0, 1.0) +
-            0.5 * ((p.lat - ?) * (p.lat - ?) + (p.lon - ?) * (p.lon - ?))
-        LIMIT 150
-        """,
-        (query, lat, lat, lon, lon),
+        f"""SELECT {COLUMNS} FROM places_fts f JOIN places p ON p.id = f.rowid
+        WHERE places_fts MATCH ? AND p.lat BETWEEN ? AND ? AND p.lon BETWEEN ? AND ?
+        ORDER BY (p.lat - ?) * (p.lat - ?) + (p.lon - ?) * (p.lon - ?) * ? LIMIT 200""",
+        (match, lat - lat_delta, lat + lat_delta, lon - lon_delta, lon + lon_delta,
+         lat, lat, lon, lon, cosine * cosine),
+    ).fetchall()
+    rows += db.execute(
+        f"""SELECT {COLUMNS} FROM places_fts f JOIN places p ON p.id = f.rowid
+        WHERE places_fts MATCH ? ORDER BY bm25(places_fts, 10.0, 4.0, 1.0) LIMIT 100""",
+        (match,),
+    ).fetchall()
+    rows += db.execute(
+        f"""SELECT {COLUMNS} FROM places_fts f JOIN places p ON p.id = f.rowid
+        WHERE places_fts MATCH ? AND p.kind = 0 AND p.category IN ({towns})
+        ORDER BY bm25(places_fts, 10.0, 4.0, 1.0) LIMIT 20""",
+        (f"name : ({query})",),
     ).fetchall()
     found = []
-    for index, (rid, name, kind, category, plat, plon) in enumerate(rows):
+    for rid, name, kind, category, plat, plon in rows:
         row = {"id": rid, "name": name, "kind": kind, "category": category, "lat": plat, "lon": plon}
+        text_score = name_score(name, wanted)
+        prominence = PLACE_PROMINENCE.get(category, 0) if text_score <= 10 else 0
         distance = meters(lat, lon, plat, plon)
-        score = index + math.log10(max(distance, 50) / 50) * 12
-        name_expanded = expanded(name)
-        if name_expanded == wanted:
-            score -= 40
-        elif name_expanded.startswith(wanted):
-            score -= 20
-        found.append((score, row))
+        found.append((text_score + math.log10(max(distance, 50) / 50) * 12 - prominence, row))
     found.sort(key=lambda item: item[0])
     seen, results = set(), []
     for _, row in found:
@@ -236,7 +266,8 @@ def route_check(report, container, config, costing, origin, candidates, label, r
             return report.check(f"ruta {label}", maneuvers > 0, detail)
         tried.append(f"{name} ({distance / 1000:.0f} km): {answer.get('error') or answer.get('error_code')}")
     if not candidates:
-        return report.check(f"ruta {label}", not required, "sin destinos a esa distancia")
+        # Un estado pequeño (Connecticut, Delaware…) no tiene ciudades tan lejos.
+        return report.check(f"ruta {label}", True, "sin ciudades a esa distancia en el estado")
     return report.check(f"ruta {label}", not required, "; ".join(tried)[:400])
 
 
@@ -258,7 +289,7 @@ def places_around(db, lat, lon, low, high, target, where):
 
 def find_city(db, name, lat, lon):
     for row in search(db, name, lat, lon)[:5]:
-        if expanded(row["name"]) == expanded(name) and (row["category"] or "").startswith("place="):
+        if expanded(row["name"]) == expanded(name) and row["category"] in ("place=city", "place=town", "place=village"):
             return row
     return None
 
