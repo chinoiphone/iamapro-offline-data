@@ -367,8 +367,16 @@ def main():
 
         capital_name = CAPITALS[state]
         capital = find_city(db, capital_name, *center)
-        if report.check(f"buscar «{capital_name}»", capital is not None,
-                        f"{capital['category']} {capital['lat']:.4f},{capital['lon']:.4f}" if capital else ""):
+        if capital:
+            capital_detail = f"{capital['category']} {capital['lat']:.4f},{capital['lon']:.4f}"
+        else:
+            # Para ver por qué: lo que salió y las filas que se llaman así.
+            top = [f"{r['name']} ({r['category']})" for r in search(db, capital_name, *center)[:5]]
+            same = db.execute(
+                "SELECT category, lat, lon FROM places WHERE name = ? AND kind = 0 LIMIT 6", (capital_name,)
+            ).fetchall()
+            capital_detail = f"salió: {', '.join(top)}; con ese nombre: {same}"
+        if report.check(f"buscar «{capital_name}»", capital is not None, capital_detail):
             report.check("la capital dentro del área del paquete", inside(capital["lat"], capital["lon"]))
 
         def sampled(label, rows, query_of, threshold):
