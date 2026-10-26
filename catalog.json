@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T08:37:56Z",
+  "updatedAt": "2026-10-26T19:25:23Z",
   "packs": [
     {
       "id": "us-district-of-columbia",
       "name": "District of Columbia",
-      "version": "2026.10.23",
-      "tag": "us-district-of-columbia-2026.10.23",
-      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-district-of-columbia-2026.10.23/us-district-of-columbia.iamapack.zip",
-      "byteCount": 22151450,
-      "sha256": "7b930b6a5bcc610ff1159fbdb459aed0d004747550b676093b78c459e0096d93",
-      "installedByteCount": 67372371,
+      "version": "2026.10.26",
+      "tag": "us-district-of-columbia-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-district-of-columbia-2026.10.26/us-district-of-columbia.iamapack.zip",
+      "byteCount": 22734249,
+      "sha256": "331e0bc82a36a7a1332e745489636204b46a513613d55761c088f72269679572",
+      "installedByteCount": 72080723,
       "bounds": {
         "minimumLatitude": 38.79166304615384,
         "minimumLongitude": -77.137525,
@@ -18,20 +18,20 @@
         "maximumLongitude": -76.8904073
       },
       "counts": {
-        "places": 19910,
+        "places": 19928,
         "streets": 4790,
-        "addresses": 141622
+        "addresses": 141621
       }
     },
     {
       "id": "us-florida",
       "name": "Florida",
-      "version": "2026.10.23",
-      "tag": "us-florida-2026.10.23",
-      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-florida-2026.10.23/us-florida.iamapack.zip",
-      "byteCount": 572847461,
-      "sha256": "38e0dfd4ff4a50c241572530668c0157d5644071533d1e80cfacae685bd0e8cf",
-      "installedByteCount": 1603491142,
+      "version": "2026.10.26",
+      "tag": "us-florida-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-florida-2026.10.26/us-florida.iamapack.zip",
+      "byteCount": 580280038,
+      "sha256": "180b508f2780e3ecf5d7817ebc3fcaf0ade6fdd865abc96454d91da6feb5be64",
+      "installedByteCount": 1658056006,
       "bounds": {
         "minimumLatitude": 24.5319001,
         "minimumLongitude": -87.52407598,
@@ -39,9 +39,9 @@
         "maximumLongitude": -80.01753902222224
       },
       "counts": {
-        "places": 270711,
-        "streets": 470749,
-        "addresses": 2025508
+        "places": 270897,
+        "streets": 470802,
+        "addresses": 2025680
       }
     }
   ]
