@@ -1,0 +1,84 @@
+name: Probar paquetes (EE. UU.)
+
+on:
+  workflow_dispatch:
+    inputs:
+      states:
+        description: "Estados con el nombre de Geofabrik, separados por coma, o «all» para todos"
+        required: true
+        default: all
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      states: ${{ steps.list.outputs.states }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        env:
+          STATES: ${{ inputs.states }}
+        run: |
+          python3 -c "import json, os; raw = os.environ['STATES'].strip().lower(); s = [x.strip() for x in open('scripts/us-states.txt')] if raw == 'all' else [x.strip() for x in raw.split(',') if x.strip()]; print('states=' + json.dumps([x for x in s if x]))" >> "$GITHUB_OUTPUT"
+
+  validate:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        state: ${{ fromJson(needs.plan.outputs.states) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Liberar espacio
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+      - name: Valhalla 3.8.3 (la versión de la app)
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/work"
+          docker run -d --name valhalla -v "$GITHUB_WORKSPACE/work":"$GITHUB_WORKSPACE/work" \
+            ghcr.io/valhalla/valhalla:3.8.3 sleep infinity
+      - name: Probar ${{ matrix.state }}
+        env:
+          VALHALLA_CONTAINER: valhalla
+        run: |
+          NAME="${{ matrix.state }}"; NAME="${NAME//\//-}"
+          echo "NAME=$NAME" >> "$GITHUB_ENV"
+          python3 scripts/validate_pack.py "${{ matrix.state }}" "$GITHUB_WORKSPACE/work" "$GITHUB_WORKSPACE/result-$NAME.json"
+      - name: Resultado
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ env.NAME }}
+          path: result-*.json
+          if-no-files-found: ignore
+
+  report:
+    needs: validate
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: results
+          merge-multiple: true
+      - name: Resumen
+        run: |
+          python3 - <<'EOF' | tee -a "$GITHUB_STEP_SUMMARY"
+          import glob, json
+          rows = [json.load(open(p)) for p in sorted(glob.glob("results/result-*.json"))]
+          ok = [r for r in rows if r["ok"]]
+          print(f"## {len(ok)} de {len(rows)} paquetes sin fallos\n")
+          print("| Estado | | Fallos |")
+          print("|---|---|---|")
+          for r in rows:
+              bad = [c for c in r["checks"] if not c["ok"]]
+              text = "<br>".join(f"{c['name']}: {c['detail']}" for c in bad)
+              print(f"| {r['state']} | {'✅' if r['ok'] else '❌'} | {text} |")
+          EOF
