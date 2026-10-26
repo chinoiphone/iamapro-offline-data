@@ -1,16 +1,223 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-26T19:25:23Z",
+  "updatedAt": "2026-10-26T20:22:01Z",
   "packs": [
+    {
+      "id": "us-alabama",
+      "name": "Alabama",
+      "version": "2026.10.26",
+      "tag": "us-alabama-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-alabama-2026.10.26/us-alabama.iamapack.zip",
+      "byteCount": 177203477,
+      "sha256": "457f0547beb5b26820f7f07a135dfd779418712354b25c75adccf2d44e2695c4",
+      "installedByteCount": 457258310,
+      "bounds": {
+        "minimumLatitude": 30.211984,
+        "minimumLongitude": -88.5467661,
+        "maximumLatitude": 35.342138600000006,
+        "maximumLongitude": -84.61633900000001
+      },
+      "counts": {
+        "places": 93412,
+        "streets": 174702,
+        "addresses": 107320,
+        "overture_added": 300306,
+        "overture_enriched": 23353
+      }
+    },
+    {
+      "id": "us-alaska",
+      "name": "Alaska",
+      "version": "2026.10.26",
+      "tag": "us-alaska-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-alaska-2026.10.26/us-alaska.iamapack.zip",
+      "byteCount": 32503700,
+      "sha256": "9223cc11d290e60711e9dd98da8fa62559b5f38367c87dd818b0efed65179b0f",
+      "installedByteCount": 83785029,
+      "bounds": {
+        "minimumLatitude": 51.395574399999994,
+        "minimumLongitude": -178.7914356,
+        "maximumLatitude": 71.34489892380951,
+        "maximumLongitude": -129.8762788
+      },
+      "counts": {
+        "places": 41687,
+        "streets": 33664,
+        "addresses": 14054,
+        "overture_added": 30867,
+        "overture_enriched": 5198
+      }
+    },
+    {
+      "id": "us-arizona",
+      "name": "Arizona",
+      "version": "2026.10.26",
+      "tag": "us-arizona-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-arizona-2026.10.26/us-arizona.iamapack.zip",
+      "byteCount": 314805950,
+      "sha256": "0558d075f6c7ba243fcd1fb64a16eaba83f08bfb1df93c43afa822eca8ff449a",
+      "installedByteCount": 905291078,
+      "bounds": {
+        "minimumLatitude": 31.3136258,
+        "minimumLongitude": -114.8059431,
+        "maximumLatitude": 37.0173618,
+        "maximumLongitude": -107.6743924
+      },
+      "counts": {
+        "places": 138812,
+        "streets": 203139,
+        "addresses": 1499173,
+        "overture_added": 219150,
+        "overture_enriched": 41486
+      }
+    },
+    {
+      "id": "us-arkansas",
+      "name": "Arkansas",
+      "version": "2026.10.26",
+      "tag": "us-arkansas-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-arkansas-2026.10.26/us-arkansas.iamapack.zip",
+      "byteCount": 139470654,
+      "sha256": "dbf08dbcd1f57720cea3c9c6722af105d888ca8d8d9a14f31df78d0daf06a196",
+      "installedByteCount": 368565575,
+      "bounds": {
+        "minimumLatitude": 32.854821199999996,
+        "minimumLongitude": -94.6217106,
+        "maximumLatitude": 37.1579982,
+        "maximumLongitude": -89.70849820000001
+      },
+      "counts": {
+        "places": 61655,
+        "streets": 147636,
+        "addresses": 291223,
+        "overture_added": 190704,
+        "overture_enriched": 15056
+      }
+    },
+    {
+      "id": "us-california-norcal",
+      "name": "California (Norte)",
+      "version": "2026.10.26",
+      "tag": "us-california-norcal-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-california-norcal-2026.10.26/us-california-norcal.iamapack.zip",
+      "byteCount": 505904463,
+      "sha256": "e36ae891b9e6226d0c8c130793baf90c671658e6e151e1cdf279761c5dc847b9",
+      "installedByteCount": 1346930000,
+      "bounds": {
+        "minimumLatitude": 35.589542099999996,
+        "minimumLongitude": -124.3153008,
+        "maximumLatitude": 42.029927122222226,
+        "maximumLongitude": -116.20730732
+      },
+      "counts": {
+        "places": 307486,
+        "streets": 329967,
+        "addresses": 1504981,
+        "overture_added": 471047,
+        "overture_enriched": 82503
+      }
+    },
+    {
+      "id": "us-california-socal",
+      "name": "California (Sur)",
+      "version": "2026.10.26",
+      "tag": "us-california-socal-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-california-socal-2026.10.26/us-california-socal.iamapack.zip",
+      "byteCount": 588995674,
+      "sha256": "d8b903c05a07bcdbe1386b109d33d9b376f3b3cf6481c7721764f6d1caac121b",
+      "installedByteCount": 1640711503,
+      "bounds": {
+        "minimumLatitude": 32.5243183,
+        "minimumLongitude": -121.1623345,
+        "maximumLatitude": 36.776416600000005,
+        "maximumLongitude": -114.1075835
+      },
+      "counts": {
+        "places": 294516,
+        "streets": 346843,
+        "addresses": 2012503,
+        "overture_added": 861974,
+        "overture_enriched": 84646
+      }
+    },
+    {
+      "id": "us-colorado",
+      "name": "Colorado",
+      "version": "2026.10.26",
+      "tag": "us-colorado-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-colorado-2026.10.26/us-colorado.iamapack.zip",
+      "byteCount": 290729404,
+      "sha256": "71f17dbaa79c737b0430a7a547ce9f0b8b1c090a9ee2bed31ba14403349208e3",
+      "installedByteCount": 790297927,
+      "bounds": {
+        "minimumLatitude": 36.978793499999995,
+        "minimumLongitude": -109.0657667,
+        "maximumLatitude": 41.533137700000005,
+        "maximumLongitude": -102.0326683
+      },
+      "counts": {
+        "places": 142897,
+        "streets": 178916,
+        "addresses": 895371,
+        "overture_added": 213628,
+        "overture_enriched": 35381
+      }
+    },
+    {
+      "id": "us-connecticut",
+      "name": "Connecticut",
+      "version": "2026.10.26",
+      "tag": "us-connecticut-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-connecticut-2026.10.26/us-connecticut.iamapack.zip",
+      "byteCount": 171644836,
+      "sha256": "911b7df32f073d457c2faa2722332645f6237e2efb250d75ec79b7a8101a1b97",
+      "installedByteCount": 467064138,
+      "bounds": {
+        "minimumLatitude": 40.979035599999996,
+        "minimumLongitude": -73.71824029999999,
+        "maximumLatitude": 42.070040600000006,
+        "maximumLongitude": -71.76827420000001
+      },
+      "counts": {
+        "places": 62592,
+        "streets": 73715,
+        "addresses": 1065072,
+        "overture_added": 132190,
+        "overture_enriched": 17219
+      }
+    },
+    {
+      "id": "us-delaware",
+      "name": "Delaware",
+      "version": "2026.10.26",
+      "tag": "us-delaware-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-delaware-2026.10.26/us-delaware.iamapack.zip",
+      "byteCount": 34397649,
+      "sha256": "195bafe09e0a76a2875ffe35548b04e93fdb5c2bd89611569610541ddac01cf6",
+      "installedByteCount": 91579719,
+      "bounds": {
+        "minimumLatitude": 38.3326662,
+        "minimumLongitude": -76.0501803,
+        "maximumLatitude": 39.860868700000005,
+        "maximumLongitude": -75.029972
+      },
+      "counts": {
+        "places": 17458,
+        "streets": 27688,
+        "addresses": 61194,
+        "overture_added": 63304,
+        "overture_enriched": 4517
+      }
+    },
     {
       "id": "us-district-of-columbia",
       "name": "District of Columbia",
       "version": "2026.10.26",
       "tag": "us-district-of-columbia-2026.10.26",
       "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-district-of-columbia-2026.10.26/us-district-of-columbia.iamapack.zip",
-      "byteCount": 22734249,
-      "sha256": "331e0bc82a36a7a1332e745489636204b46a513613d55761c088f72269679572",
-      "installedByteCount": 72080723,
+      "byteCount": 28949534,
+      "sha256": "14624df2b541a714f7d38f3bc4cdfd5a284301efeb219ce26955ead61989048b",
+      "installedByteCount": 89357651,
       "bounds": {
         "minimumLatitude": 38.79166304615384,
         "minimumLongitude": -77.137525,
@@ -20,7 +227,9 @@
       "counts": {
         "places": 19928,
         "streets": 4790,
-        "addresses": 141621
+        "addresses": 141621,
+        "overture_added": 58777,
+        "overture_enriched": 5471
       }
     },
     {
@@ -29,9 +238,9 @@
       "version": "2026.10.26",
       "tag": "us-florida-2026.10.26",
       "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-florida-2026.10.26/us-florida.iamapack.zip",
-      "byteCount": 580280038,
-      "sha256": "180b508f2780e3ecf5d7817ebc3fcaf0ade6fdd865abc96454d91da6feb5be64",
-      "installedByteCount": 1658056006,
+      "byteCount": 671801678,
+      "sha256": "7a0e13d062c173e823d6d303d47c58837fb223f6556e95ecb18b1167f705873a",
+      "installedByteCount": 1906748742,
       "bounds": {
         "minimumLatitude": 24.5319001,
         "minimumLongitude": -87.52407598,
@@ -41,7 +250,998 @@
       "counts": {
         "places": 270897,
         "streets": 470802,
-        "addresses": 2025680
+        "addresses": 2025680,
+        "overture_added": 846291,
+        "overture_enriched": 74136
+      }
+    },
+    {
+      "id": "us-georgia",
+      "name": "Georgia",
+      "version": "2026.10.26",
+      "tag": "us-georgia-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-georgia-2026.10.26/us-georgia.iamapack.zip",
+      "byteCount": 345575003,
+      "sha256": "c96532ff509badc9e4951f171e82e7ceb14ccfbed1a093285083bf7b189768f3",
+      "installedByteCount": 925091142,
+      "bounds": {
+        "minimumLatitude": 30.425932160000002,
+        "minimumLongitude": -85.57913599999999,
+        "maximumLatitude": 35.018401000000004,
+        "maximumLongitude": -80.825991
+      },
+      "counts": {
+        "places": 166779,
+        "streets": 290366,
+        "addresses": 453720,
+        "overture_added": 507414,
+        "overture_enriched": 45294
+      }
+    },
+    {
+      "id": "us-hawaii",
+      "name": "Hawaii",
+      "version": "2026.10.26",
+      "tag": "us-hawaii-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-hawaii-2026.10.26/us-hawaii.iamapack.zip",
+      "byteCount": 26145065,
+      "sha256": "e3d5e7264104faa0dd5fe3d25157c4be02c0ea25fb81d34612d791f934bc34fe",
+      "installedByteCount": 67984709,
+      "bounds": {
+        "minimumLatitude": 18.9013295,
+        "minimumLongitude": -177.40646950000001,
+        "maximumLatitude": 28.238079199999998,
+        "maximumLongitude": -154.79925699999998
+      },
+      "counts": {
+        "places": 30147,
+        "streets": 20007,
+        "addresses": 14199,
+        "overture_added": 44573,
+        "overture_enriched": 6944
+      }
+    },
+    {
+      "id": "us-idaho",
+      "name": "Idaho",
+      "version": "2026.10.26",
+      "tag": "us-idaho-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-idaho-2026.10.26/us-idaho.iamapack.zip",
+      "byteCount": 137319632,
+      "sha256": "72797b0e6d229f2661e60435d0f3e70dffe8281b8cc35f42388fc30e66f76ecb",
+      "installedByteCount": 348925252,
+      "bounds": {
+        "minimumLatitude": 41.236969599999995,
+        "minimumLongitude": -118.3606183,
+        "maximumLatitude": 49.2468791,
+        "maximumLongitude": -111.0225661
+      },
+      "counts": {
+        "places": 44395,
+        "streets": 85096,
+        "addresses": 310474,
+        "overture_added": 139891,
+        "overture_enriched": 13064
+      }
+    },
+    {
+      "id": "us-illinois",
+      "name": "Illinois",
+      "version": "2026.10.26",
+      "tag": "us-illinois-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-illinois-2026.10.26/us-illinois.iamapack.zip",
+      "byteCount": 482817123,
+      "sha256": "7848b868bad2a74cbec2ec849ba8f3c52afbecbd0fa7af6313f288810693e448",
+      "installedByteCount": 1382190407,
+      "bounds": {
+        "minimumLatitude": 36.9818515,
+        "minimumLongitude": -91.434741,
+        "maximumLatitude": 45.906136000000004,
+        "maximumLongitude": -85.47017530000001
+      },
+      "counts": {
+        "places": 250056,
+        "streets": 286826,
+        "addresses": 869052,
+        "overture_added": 1067767,
+        "overture_enriched": 65311
+      }
+    },
+    {
+      "id": "us-indiana",
+      "name": "Indiana",
+      "version": "2026.10.26",
+      "tag": "us-indiana-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-indiana-2026.10.26/us-indiana.iamapack.zip",
+      "byteCount": 328819463,
+      "sha256": "11b31a9061c4440bfc613f22397adc6acf14ff5206325e2dbbd894f0e5f51f2b",
+      "installedByteCount": 917675334,
+      "bounds": {
+        "minimumLatitude": 37.855210862499995,
+        "minimumLongitude": -88.02715649999999,
+        "maximumLatitude": 45.917639400000006,
+        "maximumLongitude": -83.9068968
+      },
+      "counts": {
+        "places": 104083,
+        "streets": 198104,
+        "addresses": 614685,
+        "overture_added": 850035,
+        "overture_enriched": 32405
+      }
+    },
+    {
+      "id": "us-iowa",
+      "name": "Iowa",
+      "version": "2026.10.26",
+      "tag": "us-iowa-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-iowa-2026.10.26/us-iowa.iamapack.zip",
+      "byteCount": 147016003,
+      "sha256": "fdd1d932ddc31ee126f0b43cc02949e02117523ad4fd5a722a87de7a0f9fac39",
+      "installedByteCount": 404288835,
+      "bounds": {
+        "minimumLatitude": 40.068936599999994,
+        "minimumLongitude": -97.27697409999999,
+        "maximumLatitude": 43.5733423,
+        "maximumLongitude": -90.1416578
+      },
+      "counts": {
+        "places": 83194,
+        "streets": 136230,
+        "addresses": 102654,
+        "overture_added": 188879,
+        "overture_enriched": 22460
+      }
+    },
+    {
+      "id": "us-kansas",
+      "name": "Kansas",
+      "version": "2026.10.26",
+      "tag": "us-kansas-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-kansas-2026.10.26/us-kansas.iamapack.zip",
+      "byteCount": 153117373,
+      "sha256": "da2272ff69841f2ffcbd7ee52d4245125baf12b5babf2a3c714d8d92e42f8214",
+      "installedByteCount": 428680517,
+      "bounds": {
+        "minimumLatitude": 36.819666399999996,
+        "minimumLongitude": -102.06908,
+        "maximumLatitude": 40.107282000000005,
+        "maximumLongitude": -93.9823223
+      },
+      "counts": {
+        "places": 60456,
+        "streets": 118973,
+        "addresses": 203974,
+        "overture_added": 160758,
+        "overture_enriched": 16006
+      }
+    },
+    {
+      "id": "us-kentucky",
+      "name": "Kentucky",
+      "version": "2026.10.26",
+      "tag": "us-kentucky-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-kentucky-2026.10.26/us-kentucky.iamapack.zip",
+      "byteCount": 190033593,
+      "sha256": "f886dd6f97d584dda28fd699135fe203e3ad5318a8eb163d10a7bd66364171f9",
+      "installedByteCount": 500374855,
+      "bounds": {
+        "minimumLatitude": 36.3054455,
+        "minimumLongitude": -89.59353569999999,
+        "maximumLatitude": 39.142328400000004,
+        "maximumLongitude": -82.0438184
+      },
+      "counts": {
+        "places": 76905,
+        "streets": 156750,
+        "addresses": 517439,
+        "overture_added": 282883,
+        "overture_enriched": 20059
+      }
+    },
+    {
+      "id": "us-louisiana",
+      "name": "Louisiana",
+      "version": "2026.10.26",
+      "tag": "us-louisiana-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-louisiana-2026.10.26/us-louisiana.iamapack.zip",
+      "byteCount": 139762768,
+      "sha256": "0d955c273e26de733e8882179c8f02214e93ee68db0a42cf4b3267f8f1bf65be",
+      "installedByteCount": 378809672,
+      "bounds": {
+        "minimumLatitude": 29.07432336190476,
+        "minimumLongitude": -94.06164969090908,
+        "maximumLatitude": 33.175481500000004,
+        "maximumLongitude": -88.8343608
+      },
+      "counts": {
+        "places": 63839,
+        "streets": 134218,
+        "addresses": 341432,
+        "overture_added": 224963,
+        "overture_enriched": 18211
+      }
+    },
+    {
+      "id": "us-maine",
+      "name": "Maine",
+      "version": "2026.10.26",
+      "tag": "us-maine-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-maine-2026.10.26/us-maine.iamapack.zip",
+      "byteCount": 103041730,
+      "sha256": "34fa0355455dfadaa7e132649dc412203512913765d84773e6ec3d7265a41d3d",
+      "installedByteCount": 270492996,
+      "bounds": {
+        "minimumLatitude": 42.9708238,
+        "minimumLongitude": -71.2582017,
+        "maximumLatitude": 47.4762939,
+        "maximumLongitude": -66.81330840000001
+      },
+      "counts": {
+        "places": 61490,
+        "streets": 86411,
+        "addresses": 630067,
+        "overture_added": 88796,
+        "overture_enriched": 11547
+      }
+    },
+    {
+      "id": "us-maryland",
+      "name": "Maryland",
+      "version": "2026.10.26",
+      "tag": "us-maryland-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-maryland-2026.10.26/us-maryland.iamapack.zip",
+      "byteCount": 267653135,
+      "sha256": "dcd94038952c9d806f072e4e167b45ce584ebd684da8ba85469dc9097b34a0ef",
+      "installedByteCount": 750351687,
+      "bounds": {
+        "minimumLatitude": 37.9004713,
+        "minimumLongitude": -79.4942086,
+        "maximumLatitude": 39.755397900000006,
+        "maximumLongitude": -75.0340049
+      },
+      "counts": {
+        "places": 127808,
+        "streets": 125564,
+        "addresses": 1317963,
+        "overture_added": 390671,
+        "overture_enriched": 32559
+      }
+    },
+    {
+      "id": "us-massachusetts",
+      "name": "Massachusetts",
+      "version": "2026.10.26",
+      "tag": "us-massachusetts-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-massachusetts-2026.10.26/us-massachusetts.iamapack.zip",
+      "byteCount": 334573935,
+      "sha256": "36e88264f775bde45d4ec1f21d8dd18c89d1ad0c32b546e7d71815243abb1363",
+      "installedByteCount": 905444684,
+      "bounds": {
+        "minimumLatitude": 41.2266585,
+        "minimumLongitude": -73.47702869999999,
+        "maximumLatitude": 42.9235716,
+        "maximumLongitude": -69.92552126000001
+      },
+      "counts": {
+        "places": 147519,
+        "streets": 165324,
+        "addresses": 2086746,
+        "overture_added": 391095,
+        "overture_enriched": 37670
+      }
+    },
+    {
+      "id": "us-michigan",
+      "name": "Michigan",
+      "version": "2026.10.26",
+      "tag": "us-michigan-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-michigan-2026.10.26/us-michigan.iamapack.zip",
+      "byteCount": 490401614,
+      "sha256": "10cbd2dfc1398f6c8896207440b6ef9d7b9ebc9c8b6a106c3a8606311f8adc9e",
+      "installedByteCount": 1349508423,
+      "bounds": {
+        "minimumLatitude": 41.390775999999995,
+        "minimumLongitude": -90.9229883,
+        "maximumLatitude": 48.7931341,
+        "maximumLongitude": -79.017793
+      },
+      "counts": {
+        "places": 199211,
+        "streets": 269586,
+        "addresses": 259610,
+        "overture_added": 1344898,
+        "overture_enriched": 53105
+      }
+    },
+    {
+      "id": "us-minnesota",
+      "name": "Minnesota",
+      "version": "2026.10.26",
+      "tag": "us-minnesota-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-minnesota-2026.10.26/us-minnesota.iamapack.zip",
+      "byteCount": 247727523,
+      "sha256": "40a3b8ca3975745afb18caa4cce76732f699bf92759f9b6454ae128da0681792",
+      "installedByteCount": 673039688,
+      "bounds": {
+        "minimumLatitude": 43.4600005,
+        "minimumLongitude": -99.9092742,
+        "maximumLatitude": 49.8246064,
+        "maximumLongitude": -84.77332
+      },
+      "counts": {
+        "places": 131764,
+        "streets": 191956,
+        "addresses": 329555,
+        "overture_added": 381797,
+        "overture_enriched": 33821
+      }
+    },
+    {
+      "id": "us-mississippi",
+      "name": "Mississippi",
+      "version": "2026.10.26",
+      "tag": "us-mississippi-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-mississippi-2026.10.26/us-mississippi.iamapack.zip",
+      "byteCount": 115175233,
+      "sha256": "b96e1aed4e24e80561630958b1c06f9b07e5087927fe8da21f3c54d1cc46e11e",
+      "installedByteCount": 300883274,
+      "bounds": {
+        "minimumLatitude": 30.1880663,
+        "minimumLongitude": -91.5631738,
+        "maximumLatitude": 35.189129300000005,
+        "maximumLongitude": -87.1936819
+      },
+      "counts": {
+        "places": 51380,
+        "streets": 112526,
+        "addresses": 150971,
+        "overture_added": 245842,
+        "overture_enriched": 12520
+      }
+    },
+    {
+      "id": "us-missouri",
+      "name": "Missouri",
+      "version": "2026.10.26",
+      "tag": "us-missouri-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-missouri-2026.10.26/us-missouri.iamapack.zip",
+      "byteCount": 284087183,
+      "sha256": "4fd4c54c77c640066a168976dc508464bae6ff902b8f5bf536c572ba0547d91b",
+      "installedByteCount": 762078535,
+      "bounds": {
+        "minimumLatitude": 35.99812549999999,
+        "minimumLongitude": -95.698551,
+        "maximumLatitude": 40.8786135,
+        "maximumLongitude": -89.1021563
+      },
+      "counts": {
+        "places": 117759,
+        "streets": 224240,
+        "addresses": 501452,
+        "overture_added": 364753,
+        "overture_enriched": 30823
+      }
+    },
+    {
+      "id": "us-montana",
+      "name": "Montana",
+      "version": "2026.10.26",
+      "tag": "us-montana-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-montana-2026.10.26/us-montana.iamapack.zip",
+      "byteCount": 83330577,
+      "sha256": "b0ced79280b3ef1351998d7cb21f6301f84cd3c4dd323882de21ccd4c20781c3",
+      "installedByteCount": 198319430,
+      "bounds": {
+        "minimumLatitude": 44.083722099999996,
+        "minimumLongitude": -117.14168219999999,
+        "maximumLatitude": 49.8406614,
+        "maximumLongitude": -103.2908891
+      },
+      "counts": {
+        "places": 46751,
+        "streets": 65476,
+        "addresses": 27124,
+        "overture_added": 87509,
+        "overture_enriched": 11675
+      }
+    },
+    {
+      "id": "us-nebraska",
+      "name": "Nebraska",
+      "version": "2026.10.26",
+      "tag": "us-nebraska-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-nebraska-2026.10.26/us-nebraska.iamapack.zip",
+      "byteCount": 105223171,
+      "sha256": "5fd2d37509978265723da050ef73e73a5546ee04a444ec7ee0248783e5161628",
+      "installedByteCount": 283129159,
+      "bounds": {
+        "minimumLatitude": 39.1129008,
+        "minimumLongitude": -104.39753209999999,
+        "maximumLatitude": 43.8959598,
+        "maximumLongitude": -94.6716444
+      },
+      "counts": {
+        "places": 43815,
+        "streets": 86481,
+        "addresses": 128610,
+        "overture_added": 135277,
+        "overture_enriched": 11828
+      }
+    },
+    {
+      "id": "us-nevada",
+      "name": "Nevada",
+      "version": "2026.10.26",
+      "tag": "us-nevada-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-nevada-2026.10.26/us-nevada.iamapack.zip",
+      "byteCount": 157441348,
+      "sha256": "b7bb8415958179a4b7acd15e195e22a84f878821b24b875a18ce4336b6528b58",
+      "installedByteCount": 411972933,
+      "bounds": {
+        "minimumLatitude": 34.059059,
+        "minimumLongitude": -120.02394269999999,
+        "maximumLatitude": 42.0171963,
+        "maximumLongitude": -112.3482439
+      },
+      "counts": {
+        "places": 50856,
+        "streets": 83811,
+        "addresses": 211923,
+        "overture_added": 456293,
+        "overture_enriched": 12447
+      }
+    },
+    {
+      "id": "us-new-hampshire",
+      "name": "New Hampshire",
+      "version": "2026.10.26",
+      "tag": "us-new-hampshire-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-new-hampshire-2026.10.26/us-new-hampshire.iamapack.zip",
+      "byteCount": 78316729,
+      "sha256": "9553313c7418bccb600db8ee31a9a5172b094fbbd4b450d2636d2c0ad08f4797",
+      "installedByteCount": 200703308,
+      "bounds": {
+        "minimumLatitude": 42.579423899999995,
+        "minimumLongitude": -72.7179893,
+        "maximumLatitude": 45.3485414,
+        "maximumLongitude": -70.54782440000001
+      },
+      "counts": {
+        "places": 52335,
+        "streets": 58052,
+        "addresses": 103995,
+        "overture_added": 100229,
+        "overture_enriched": 12001
+      }
+    },
+    {
+      "id": "us-new-jersey",
+      "name": "New Jersey",
+      "version": "2026.10.26",
+      "tag": "us-new-jersey-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-new-jersey-2026.10.26/us-new-jersey.iamapack.zip",
+      "byteCount": 244086227,
+      "sha256": "7e1158f2758b2504089961d8477432c7026697d0ef1b9033644256692489c971",
+      "installedByteCount": 660051273,
+      "bounds": {
+        "minimumLatitude": 38.9118742,
+        "minimumLongitude": -75.550113,
+        "maximumLatitude": 41.3386883,
+        "maximumLongitude": -73.9028364
+      },
+      "counts": {
+        "places": 121842,
+        "streets": 153801,
+        "addresses": 347100,
+        "overture_added": 681885,
+        "overture_enriched": 38794
+      }
+    },
+    {
+      "id": "us-new-mexico",
+      "name": "New Mexico",
+      "version": "2026.10.26",
+      "tag": "us-new-mexico-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-new-mexico-2026.10.26/us-new-mexico.iamapack.zip",
+      "byteCount": 127011928,
+      "sha256": "fe0a61c368b34ceb76ca49d08527a024efe2f67e5a13298651eaf1e6be6d6822",
+      "installedByteCount": 320210249,
+      "bounds": {
+        "minimumLatitude": 31.3531631,
+        "minimumLongitude": -111.2952389,
+        "maximumLatitude": 37.04505831987952,
+        "maximumLongitude": -102.97268360000001
+      },
+      "counts": {
+        "places": 59958,
+        "streets": 89413,
+        "addresses": 71829,
+        "overture_added": 148533,
+        "overture_enriched": 12313
+      }
+    },
+    {
+      "id": "us-new-york",
+      "name": "New York",
+      "version": "2026.10.26",
+      "tag": "us-new-york-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-new-york-2026.10.26/us-new-york.iamapack.zip",
+      "byteCount": 821472282,
+      "sha256": "35f004511c011e0646492261fe6f1038867d8297fca1279e998a89ac9e47d080",
+      "installedByteCount": 2276164935,
+      "bounds": {
+        "minimumLatitude": 40.4832748,
+        "minimumLongitude": -82.8605133,
+        "maximumLatitude": 45.020566900000006,
+        "maximumLongitude": -71.90118522307692
+      },
+      "counts": {
+        "places": 313255,
+        "streets": 291277,
+        "addresses": 5477308,
+        "overture_added": 1642329,
+        "overture_enriched": 94760
+      }
+    },
+    {
+      "id": "us-north-carolina",
+      "name": "North Carolina",
+      "version": "2026.10.26",
+      "tag": "us-north-carolina-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-north-carolina-2026.10.26/us-north-carolina.iamapack.zip",
+      "byteCount": 453965704,
+      "sha256": "f302117aefb761e37b70eee8b6766e1a181e71f1fce85a75008444d2a111cc37",
+      "installedByteCount": 1212898637,
+      "bounds": {
+        "minimumLatitude": 33.829959485714284,
+        "minimumLongitude": -84.290576,
+        "maximumLatitude": 36.60882,
+        "maximumLongitude": -75.4436302
+      },
+      "counts": {
+        "places": 180172,
+        "streets": 365639,
+        "addresses": 853380,
+        "overture_added": 630137,
+        "overture_enriched": 53204
+      }
+    },
+    {
+      "id": "us-north-dakota",
+      "name": "North Dakota",
+      "version": "2026.10.26",
+      "tag": "us-north-dakota-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-north-dakota-2026.10.26/us-north-dakota.iamapack.zip",
+      "byteCount": 66409685,
+      "sha256": "56583dc9dba6bf60681189070d6a72acf883d2f1d3c4f5744f08eb87262662f8",
+      "installedByteCount": 168549707,
+      "bounds": {
+        "minimumLatitude": 44.4647629,
+        "minimumLongitude": -104.6861763,
+        "maximumLatitude": 49.5234523,
+        "maximumLongitude": -95.4687103
+      },
+      "counts": {
+        "places": 18814,
+        "streets": 65064,
+        "addresses": 8618,
+        "overture_added": 56369,
+        "overture_enriched": 4169
+      }
+    },
+    {
+      "id": "us-ohio",
+      "name": "Ohio",
+      "version": "2026.10.26",
+      "tag": "us-ohio-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-ohio-2026.10.26/us-ohio.iamapack.zip",
+      "byteCount": 443791250,
+      "sha256": "1c9b33e13a72e8cf436703dde7a2b73ba15f894c522de7924c208988189da9b6",
+      "installedByteCount": 1223499075,
+      "bounds": {
+        "minimumLatitude": 38.398641549999994,
+        "minimumLongitude": -84.87839699999999,
+        "maximumLatitude": 42.711664500000005,
+        "maximumLongitude": -79.036421
+      },
+      "counts": {
+        "places": 218984,
+        "streets": 270175,
+        "addresses": 584012,
+        "overture_added": 714381,
+        "overture_enriched": 64035
+      }
+    },
+    {
+      "id": "us-oklahoma",
+      "name": "Oklahoma",
+      "version": "2026.10.26",
+      "tag": "us-oklahoma-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-oklahoma-2026.10.26/us-oklahoma.iamapack.zip",
+      "byteCount": 173324090,
+      "sha256": "f21424e5a8fe75283038d05292aa277ca7bf1c78459dcb53d75b22121e64d8fa",
+      "installedByteCount": 472485191,
+      "bounds": {
+        "minimumLatitude": 33.5540197,
+        "minimumLongitude": -102.93334039999999,
+        "maximumLatitude": 37.305968,
+        "maximumLongitude": -93.3108509
+      },
+      "counts": {
+        "places": 72036,
+        "streets": 144056,
+        "addresses": 99706,
+        "overture_added": 241375,
+        "overture_enriched": 20313
+      }
+    },
+    {
+      "id": "us-oregon",
+      "name": "Oregon",
+      "version": "2026.10.26",
+      "tag": "us-oregon-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-oregon-2026.10.26/us-oregon.iamapack.zip",
+      "byteCount": 256612143,
+      "sha256": "10bbb254cd5514243e38f566f24f5cb9f24fead6cf049734b8ddbf0a3d3de20c",
+      "installedByteCount": 688639301,
+      "bounds": {
+        "minimumLatitude": 38.2352013,
+        "minimumLongitude": -124.52564389999999,
+        "maximumLatitude": 46.290251700000006,
+        "maximumLongitude": -116.6801409
+      },
+      "counts": {
+        "places": 128149,
+        "streets": 150493,
+        "addresses": 893883,
+        "overture_added": 353328,
+        "overture_enriched": 29503
+      }
+    },
+    {
+      "id": "us-pennsylvania",
+      "name": "Pennsylvania",
+      "version": "2026.10.26",
+      "tag": "us-pennsylvania-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-pennsylvania-2026.10.26/us-pennsylvania.iamapack.zip",
+      "byteCount": 467693086,
+      "sha256": "36f1cea9f48817cf039581c0bba365f971965f33725257011ae7fd7789db5d81",
+      "installedByteCount": 1255191883,
+      "bounds": {
+        "minimumLatitude": 39.6740181,
+        "minimumLongitude": -83.2084928,
+        "maximumLatitude": 42.659821,
+        "maximumLongitude": -74.6975795
+      },
+      "counts": {
+        "places": 254640,
+        "streets": 354378,
+        "addresses": 1083705,
+        "overture_added": 834576,
+        "overture_enriched": 68957
+      }
+    },
+    {
+      "id": "us-puerto-rico",
+      "name": "Puerto Rico",
+      "version": "2026.10.26",
+      "tag": "us-puerto-rico-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-puerto-rico-2026.10.26/us-puerto-rico.iamapack.zip",
+      "byteCount": 46580335,
+      "sha256": "8d96b4c852452aefe631e18e109cb8dee32f23dce9f997bd552099b3eed3a33b",
+      "installedByteCount": 122508618,
+      "bounds": {
+        "minimumLatitude": 17.9027146,
+        "minimumLongitude": -67.868258,
+        "maximumLatitude": 18.5297118,
+        "maximumLongitude": -65.24084
+      },
+      "counts": {
+        "places": 44348,
+        "streets": 53344,
+        "addresses": 107948,
+        "overture_added": 52574,
+        "overture_enriched": 7650
+      }
+    },
+    {
+      "id": "us-rhode-island",
+      "name": "Rhode Island",
+      "version": "2026.10.26",
+      "tag": "us-rhode-island-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-rhode-island-2026.10.26/us-rhode-island.iamapack.zip",
+      "byteCount": 33757824,
+      "sha256": "ae211a0ba402ff7948a0c1a86fa2ba36561f09446016028aa551e520c64b98b8",
+      "installedByteCount": 90135883,
+      "bounds": {
+        "minimumLatitude": 41.1298469,
+        "minimumLongitude": -71.8791256,
+        "maximumLatitude": 42.187137,
+        "maximumLongitude": -71.0945394
+      },
+      "counts": {
+        "places": 20203,
+        "streets": 25960,
+        "addresses": 67379,
+        "overture_added": 61942,
+        "overture_enriched": 4753
+      }
+    },
+    {
+      "id": "us-south-carolina",
+      "name": "South Carolina",
+      "version": "2026.10.26",
+      "tag": "us-south-carolina-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-south-carolina-2026.10.26/us-south-carolina.iamapack.zip",
+      "byteCount": 193938459,
+      "sha256": "d47c33a856efe2b136e23b7e121706c9c6aa09a6e857004b9337e52beb584cab",
+      "installedByteCount": 512425293,
+      "bounds": {
+        "minimumLatitude": 32.091324199999995,
+        "minimumLongitude": -83.3717958,
+        "maximumLatitude": 35.233518800000006,
+        "maximumLongitude": -78.46591165526316
+      },
+      "counts": {
+        "places": 109497,
+        "streets": 190050,
+        "addresses": 281383,
+        "overture_added": 281314,
+        "overture_enriched": 33869
+      }
+    },
+    {
+      "id": "us-south-dakota",
+      "name": "South Dakota",
+      "version": "2026.10.26",
+      "tag": "us-south-dakota-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-south-dakota-2026.10.26/us-south-dakota.iamapack.zip",
+      "byteCount": 52076496,
+      "sha256": "7cc8458516c6d35381d119d573ada9ce68d8c122dc2c88e991549460861a6f3c",
+      "installedByteCount": 134929739,
+      "bounds": {
+        "minimumLatitude": 41.869432499999995,
+        "minimumLongitude": -104.4032251,
+        "maximumLatitude": 47.353131100000006,
+        "maximumLongitude": -95.75358390000001
+      },
+      "counts": {
+        "places": 26724,
+        "streets": 54826,
+        "addresses": 12731,
+        "overture_added": 78846,
+        "overture_enriched": 7633
+      }
+    },
+    {
+      "id": "us-tennessee",
+      "name": "Tennessee",
+      "version": "2026.10.26",
+      "tag": "us-tennessee-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-tennessee-2026.10.26/us-tennessee.iamapack.zip",
+      "byteCount": 239080173,
+      "sha256": "26ebf4fed4562a9ecdeda13dc9b0b3ed8702feafa33d26d9050c05984f384233",
+      "installedByteCount": 634273096,
+      "bounds": {
+        "minimumLatitude": 34.5573919,
+        "minimumLongitude": -90.16825588421052,
+        "maximumLatitude": 37.0141471,
+        "maximumLongitude": -81.69401500000001
+      },
+      "counts": {
+        "places": 121215,
+        "streets": 210096,
+        "addresses": 145059,
+        "overture_added": 415758,
+        "overture_enriched": 31365
+      }
+    },
+    {
+      "id": "us-texas",
+      "name": "Texas",
+      "version": "2026.10.26",
+      "tag": "us-texas-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-texas-2026.10.26/us-texas.iamapack.zip",
+      "byteCount": 932259548,
+      "sha256": "545d4828819d5942de9525a3352c0acebe455d8e226d9bcdf4c694256d4e7a86",
+      "installedByteCount": 2550441284,
+      "bounds": {
+        "minimumLatitude": 25.8767949,
+        "minimumLongitude": -106.62213743076923,
+        "maximumLatitude": 36.520524300000005,
+        "maximumLongitude": -93.6099002
+      },
+      "counts": {
+        "places": 450589,
+        "streets": 679736,
+        "addresses": 1712969,
+        "overture_added": 1286169,
+        "overture_enriched": 122000
+      }
+    },
+    {
+      "id": "us-us-virgin-islands",
+      "name": "U.S. Virgin Islands",
+      "version": "2026.10.26",
+      "tag": "us-us-virgin-islands-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-us-virgin-islands-2026.10.26/us-us-virgin-islands.iamapack.zip",
+      "byteCount": 6475286,
+      "sha256": "bc56d24d81b12acd2e7ebea1ccbb87bbc57c261ff21e8324f9cf33ef1a026b3a",
+      "installedByteCount": 16092496,
+      "bounds": {
+        "minimumLatitude": 17.6569056,
+        "minimumLongitude": -66.3852316,
+        "maximumLatitude": 18.5094444,
+        "maximumLongitude": -64.0493704
+      },
+      "counts": {
+        "places": 2385,
+        "streets": 1926,
+        "addresses": 972,
+        "overture_added": 39995,
+        "overture_enriched": 296
+      }
+    },
+    {
+      "id": "us-utah",
+      "name": "Utah",
+      "version": "2026.10.26",
+      "tag": "us-utah-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-utah-2026.10.26/us-utah.iamapack.zip",
+      "byteCount": 187075793,
+      "sha256": "5aee313d6cd452332a9d474cdc7e2956ba0dee8599a1d40d1754488eacf3537e",
+      "installedByteCount": 519286083,
+      "bounds": {
+        "minimumLatitude": 35.5742395,
+        "minimumLongitude": -115.5603618,
+        "maximumLatitude": 42.0024256,
+        "maximumLongitude": -108.330332
+      },
+      "counts": {
+        "places": 88854,
+        "streets": 106565,
+        "addresses": 650930,
+        "overture_added": 189696,
+        "overture_enriched": 18328
+      }
+    },
+    {
+      "id": "us-vermont",
+      "name": "Vermont",
+      "version": "2026.10.26",
+      "tag": "us-vermont-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-vermont-2026.10.26/us-vermont.iamapack.zip",
+      "byteCount": 59274041,
+      "sha256": "5d8d1e58451a15cd0f315ec407e2b24e460f3186ccd72044ec3154e755db4767",
+      "installedByteCount": 154465606,
+      "bounds": {
+        "minimumLatitude": 42.61125,
+        "minimumLongitude": -73.45518419999999,
+        "maximumLatitude": 45.327169000000005,
+        "maximumLongitude": -71.4081501
+      },
+      "counts": {
+        "places": 26389,
+        "streets": 39421,
+        "addresses": 340111,
+        "overture_added": 73700,
+        "overture_enriched": 6010
+      }
+    },
+    {
+      "id": "us-virginia",
+      "name": "Virginia",
+      "version": "2026.10.26",
+      "tag": "us-virginia-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-virginia-2026.10.26/us-virginia.iamapack.zip",
+      "byteCount": 457262031,
+      "sha256": "d0358b934a68490dd286a2653c712cd3f78233223a371f0fe9140096e9a2bcaf",
+      "installedByteCount": 1241204039,
+      "bounds": {
+        "minimumLatitude": 36.484662799999995,
+        "minimumLongitude": -83.30683959999999,
+        "maximumLatitude": 39.33640382,
+        "maximumLongitude": -75.325513
+      },
+      "counts": {
+        "places": 194472,
+        "streets": 238597,
+        "addresses": 2068329,
+        "overture_added": 504654,
+        "overture_enriched": 52235
+      }
+    },
+    {
+      "id": "us-washington",
+      "name": "Washington",
+      "version": "2026.10.26",
+      "tag": "us-washington-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-washington-2026.10.26/us-washington.iamapack.zip",
+      "byteCount": 368734163,
+      "sha256": "12f0cdd15c4203052f0b4b81196508eca144d088cd2d8fe70790d1693643580a",
+      "installedByteCount": 1041007945,
+      "bounds": {
+        "minimumLatitude": 45.554418399999996,
+        "minimumLongitude": -124.72011739999999,
+        "maximumLatitude": 49.107317800000004,
+        "maximumLongitude": -116.9799314
+      },
+      "counts": {
+        "places": 229806,
+        "streets": 224554,
+        "addresses": 1549150,
+        "overture_added": 256318,
+        "overture_enriched": 60668
+      }
+    },
+    {
+      "id": "us-west-virginia",
+      "name": "West Virginia",
+      "version": "2026.10.26",
+      "tag": "us-west-virginia-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-west-virginia-2026.10.26/us-west-virginia.iamapack.zip",
+      "byteCount": 96729121,
+      "sha256": "89d8fbc5cd8645e61b85da395ea10c4a1a9c6165b14ec895217b1a6dfe1ecbdd",
+      "installedByteCount": 241718604,
+      "bounds": {
+        "minimumLatitude": 36.9308294,
+        "minimumLongitude": -82.8620138,
+        "maximumLatitude": 40.6977167,
+        "maximumLongitude": -77.54027400000001
+      },
+      "counts": {
+        "places": 45601,
+        "streets": 85132,
+        "addresses": 35553,
+        "overture_added": 325594,
+        "overture_enriched": 10896
+      }
+    },
+    {
+      "id": "us-wisconsin",
+      "name": "Wisconsin",
+      "version": "2026.10.26",
+      "tag": "us-wisconsin-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-wisconsin-2026.10.26/us-wisconsin.iamapack.zip",
+      "byteCount": 320201503,
+      "sha256": "7c52ffcc144a186b778864a60c09624d0c1533eb38e67ff81b488b3642c3e73b",
+      "installedByteCount": 883215688,
+      "bounds": {
+        "minimumLatitude": 41.6592937,
+        "minimumLongitude": -92.81550039999999,
+        "maximumLatitude": 48.7927325,
+        "maximumLongitude": -84.85605545
+      },
+      "counts": {
+        "places": 135728,
+        "streets": 197924,
+        "addresses": 609729,
+        "overture_added": 686756,
+        "overture_enriched": 38066
+      }
+    },
+    {
+      "id": "us-wyoming",
+      "name": "Wyoming",
+      "version": "2026.10.26",
+      "tag": "us-wyoming-2026.10.26",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-wyoming-2026.10.26/us-wyoming.iamapack.zip",
+      "byteCount": 61477389,
+      "sha256": "4b8a82a920f935d7ef1295c6032714e5dd26d280f7366f6777e0b58dfdca65cb",
+      "installedByteCount": 143041862,
+      "bounds": {
+        "minimumLatitude": 40.52463959999999,
+        "minimumLongitude": -111.1012832,
+        "maximumLatitude": 45.32122510000001,
+        "maximumLongitude": -103.3077732
+      },
+      "counts": {
+        "places": 21386,
+        "streets": 37612,
+        "addresses": 40642,
+        "overture_added": 42494,
+        "overture_enriched": 4118
       }
     }
   ]
