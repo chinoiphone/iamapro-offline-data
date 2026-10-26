@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       states:
-        description: "Estados con el nombre de Geofabrik, separados por coma (florida,new-york,texas)"
+        description: "Estados con el nombre de Geofabrik, separados por coma (florida,new-york,california/norcal), o «all» para todos"
         required: true
         default: florida
 
@@ -17,11 +17,12 @@ jobs:
     outputs:
       states: ${{ steps.list.outputs.states }}
     steps:
+      - uses: actions/checkout@v4
       - id: list
         env:
           STATES: ${{ inputs.states }}
         run: |
-          python3 -c "import json, os; s = [x.strip().lower() for x in os.environ['STATES'].split(',') if x.strip()]; print('states=' + json.dumps(s))" >> "$GITHUB_OUTPUT"
+          python3 -c "import json, os; raw = os.environ['STATES'].strip().lower(); s = [x.strip() for x in open('scripts/us-states.txt')] if raw == 'all' else [x.strip() for x in raw.split(',') if x.strip()]; print('states=' + json.dumps([x for x in s if x]))" >> "$GITHUB_OUTPUT"
 
   build:
     needs: plan
@@ -29,7 +30,7 @@ jobs:
     timeout-minutes: 350
     strategy:
       fail-fast: false
-      max-parallel: 3
+      max-parallel: 8
       matrix:
         state: ${{ fromJson(needs.plan.outputs.states) }}
     steps:
@@ -42,7 +43,13 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq osmium-tool
+          python3 -m pip install -q duckdb
           docker pull ghcr.io/valhalla/valhalla:3.8.3
+          # La última versión de Overture Maps (lugares).
+          RELEASE=$(curl -s "https://overturemaps-us-west-2.s3.us-west-2.amazonaws.com/?list-type=2&prefix=release/&delimiter=/" \
+            | grep -oE "release/[0-9-]+\.[0-9]+/" | sed 's#release/##; s#/##' | sort | tail -1)
+          echo "Overture: $RELEASE"
+          echo "OVERTURE_RELEASE=$RELEASE" >> "$GITHUB_ENV"
       - name: Preparar ${{ matrix.state }}
         run: bash scripts/build_state.sh "${{ matrix.state }}"
       - name: Publicar

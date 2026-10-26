@@ -13,7 +13,12 @@ import sys
 import zipfile
 
 REPO = os.environ.get("GITHUB_REPOSITORY", "chinoiphone/iamapro-offline-data")
-NAMES = {"district-of-columbia": "District of Columbia", "us-virgin-islands": "U.S. Virgin Islands"}
+NAMES = {
+    "district-of-columbia": "District of Columbia",
+    "us-virgin-islands": "U.S. Virgin Islands",
+    "california/norcal": "California (Norte)",
+    "california/socal": "California (Sur)",
+}
 
 
 def sha256(path):
@@ -26,7 +31,7 @@ def sha256(path):
 
 def main():
     state, work, out = sys.argv[1:4]
-    region = f"us-{state}"
+    region = "us-" + state.replace("/", "-")
     name = NAMES.get(state, state.replace("-", " ").title())
     now = datetime.datetime.now(datetime.timezone.utc)
     version = now.strftime("%Y.%m.%d")

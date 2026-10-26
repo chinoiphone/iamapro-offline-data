@@ -6,7 +6,7 @@ set -euo pipefail
 
 STATE="$1"
 HERE="$(cd "$(dirname "$0")" && pwd)"
-WORK="${WORK:-$PWD/work/$STATE}"
+WORK="${WORK:-$PWD/work/${STATE//\//-}}"
 OUT="${OUT:-$PWD/out}"
 VALHALLA_IMAGE="ghcr.io/valhalla/valhalla:3.8.3"
 mkdir -p "$WORK" "$OUT"
@@ -46,6 +46,7 @@ osmium export "$WORK/named.osm.pbf" -f geojsonseq -a type,id \
   -x print_record_separator=false \
   -o "$WORK/named.geojsonseq" --overwrite
 rm -f "$WORK/named.osm.pbf"
+# Con OVERTURE_RELEASE, también los negocios de Overture Maps (ver overture.py).
 python3 "$HERE/build_search.py" "$WORK/named.geojsonseq" "$WORK/search.sqlite" "$WORK/stats.json"
 rm -f "$WORK/named.geojsonseq"
 ls -la "$WORK/search.sqlite"

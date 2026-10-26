@@ -3,8 +3,14 @@
 set -euo pipefail
 STATE="$1"
 OUT="${OUT:-$PWD/out}"
-REGION="us-$STATE"
+REGION="us-${STATE//\//-}"
 TAG="$(cat "$OUT/tag.txt")"
+# GitHub no acepta archivos de más de 2 GB en un Release.
+SIZE=$(stat -c %s "$OUT/$REGION.iamapack.zip")
+if [ "$SIZE" -ge 2000000000 ]; then
+  echo "::error::$REGION pesa $SIZE bytes: más que el límite de 2 GB de GitHub. Hay que partir el estado."
+  exit 1
+fi
 NAME="$(python3 -c "import json; print(json.load(open('$OUT/$REGION.entry.json'))['name'])")"
 if gh release view "$TAG" >/dev/null 2>&1; then
   gh release upload "$TAG" "$OUT/$REGION.iamapack.zip" "$OUT/$REGION.entry.json" --clobber

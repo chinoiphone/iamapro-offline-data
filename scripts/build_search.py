@@ -111,6 +111,10 @@ def trimmed_bounds(latitudes, longitudes):
         return [0.0, 0.0, 0.0, 0.0]
     lats = sorted(latitudes)
     lons = sorted(longitudes)
+    # Alaska cruza el meridiano 180: sin las Aleutianas del otro lado, el
+    # rectángulo daba la vuelta al mundo.
+    if lons[-1] - lons[0] > 90:
+        lons = [lon for lon in lons if lon < 0] or lons
     cut = max(int(len(lats) * 0.0002), 0)
     margin = 0.02
     return [lats[cut] - margin, lons[cut] - margin,
@@ -216,6 +220,14 @@ def main():
         if len(rows) >= 50_000:
             flush()
     flush()
+
+    # Los negocios de Overture Maps que le faltan a OpenStreetMap.
+    release = os.environ.get("OVERTURE_RELEASE")
+    if release:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import overture
+        counts.update(overture.merge(db, trimmed_bounds(latitudes, longitudes), release))
+        db.commit()
 
     db.executescript(
         """
