@@ -149,8 +149,8 @@ def search(db, text, lat, lon, limit=25):
     rows += db.execute(
         f"""SELECT {COLUMNS} FROM places_fts f JOIN places p ON p.id = f.rowid
         WHERE places_fts MATCH ? AND p.kind = 0 AND p.category IN ({towns})
-        ORDER BY bm25(places_fts, 10.0, 4.0, 1.0) LIMIT 20""",
-        (f"name : ({query})",),
+        ORDER BY lower(p.name) = ? DESC, bm25(places_fts, 10.0, 4.0, 1.0) LIMIT 40""",
+        (f"name : ({query})", text.strip().lower()),
     ).fetchall()
     found = []
     for rid, name, kind, category, plat, plon in rows:
