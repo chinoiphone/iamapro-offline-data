@@ -140,6 +140,9 @@ def main():
             category TEXT,
             housenumber TEXT,
             street TEXT,
+            -- «3555 Southwest 8th Street»: lo que se busca como dirección
+            -- (el número de casa de un lugar también).
+            address TEXT,
             city TEXT,
             postcode TEXT,
             lat REAL NOT NULL,
@@ -216,8 +219,9 @@ def main():
 
     db.executescript(
         """
+        UPDATE places SET address = NULLIF(trim(coalesce(housenumber || ' ', '') || coalesce(street, '')), '');
         CREATE VIRTUAL TABLE places_fts USING fts5(
-            name, street, city,
+            name, address, city,
             content = 'places', content_rowid = 'id',
             tokenize = "unicode61 remove_diacritics 2",
             detail = column
