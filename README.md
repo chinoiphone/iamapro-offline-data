@@ -14,3 +14,18 @@ desde OpenFreeMap.
 
 Datos © colaboradores de OpenStreetMap, bajo licencia ODbL
 (https://www.openstreetmap.org/copyright). Extractos de Geofabrik.
+
+## Cuba: lugares de Foursquare
+
+`scripts/cuba_foursquare.py` suma al paquete de Cuba (`cuba-core`, el que va
+dentro de la app) los lugares de FSQ Open Source Places que le faltan
+(paladares, hoteles, casas particulares, bares, playas…), sin repetir los de
+OpenStreetMap y sin la basura (vuelos, cruceros, calles):
+
+    pip install duckdb
+    python3 scripts/cuba_foursquare.py cuba-core.iamapack.zip cuba-core-nuevo.iamapack.zip
+
+Usa la copia pública de source.coop (`FSQ_RELEASE`, por defecto 2025-02-06),
+que no pide cuenta. El paquete sale con otra revisión de datos: la app avisa
+«Actualización de mapa» a quien ya lo tiene. Lugares © Foursquare Labs, Inc.,
+licencia Apache 2.0 (va en el NOTICE.txt del paquete).
