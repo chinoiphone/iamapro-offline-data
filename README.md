@@ -23,9 +23,11 @@ dentro de la app) los lugares de FSQ Open Source Places que le faltan
 OpenStreetMap y sin la basura (vuelos, cruceros, calles):
 
     pip install duckdb
-    python3 scripts/cuba_foursquare.py cuba-core.iamapack.zip cuba-core-nuevo.iamapack.zip
+    FSQ_HF_TOKEN=hf_… python3 scripts/cuba_foursquare.py cuba-core.iamapack.zip cuba-core-nuevo.iamapack.zip
 
-Usa la copia pública de source.coop (`FSQ_RELEASE`, por defecto 2025-02-06),
-que no pide cuenta. El paquete sale con otra revisión de datos: la app avisa
+Con `FSQ_HF_TOKEN` (token «Read» de Hugging Face de una cuenta que aceptó las
+condiciones de foursquare/fsq-os-places) usa la versión más nueva de Foursquare;
+sin token, la copia pública de source.coop de 2025-02-06, que no pide cuenta.
+Los dos bajan solo la parte de Cuba (unos segundos). El paquete sale con otra revisión de datos: la app avisa
 «Actualización de mapa» a quien ya lo tiene. Lugares © Foursquare Labs, Inc.,
 licencia Apache 2.0 (va en el NOTICE.txt del paquete).

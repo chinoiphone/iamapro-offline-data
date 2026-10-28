@@ -8,8 +8,11 @@ en tailandés puestos en La Habana, calles y barrios (ya están).
 
 Uso: cuba_foursquare.py <cuba-core.iamapack.zip> <nuevo.iamapack.zip>
 
-La copia pública de source.coop (FSQ_RELEASE, por defecto 2025-02-06) no pide
-cuenta. Licencia Apache 2.0 © Foursquare Labs, Inc. (va en NOTICE.txt).
+Con FSQ_HF_TOKEN (un token «Read» de Hugging Face de una cuenta que aceptó las
+condiciones en huggingface.co/datasets/foursquare/fsq-os-places) usa la versión
+más nueva de Foursquare (o FSQ_RELEASE, p. ej. 2026-10-15). Sin token, la copia
+pública de source.coop de 2025-02-06, que no pide cuenta. Licencia Apache 2.0
+© Foursquare Labs, Inc. (va en NOTICE.txt).
 """
 import datetime
 import hashlib
@@ -24,11 +27,8 @@ import tempfile
 import unicodedata
 import zipfile
 
-RELEASE = os.environ.get("FSQ_RELEASE", "2025-02-06")
-SOURCE = f"https://data.source.coop/fused/fsq-os-places/{RELEASE}/places"
-# Los archivos de la copia van partidos por zonas (0.parquet … 80.parquet);
-# DuckDB solo baja los trozos que caen en Cuba.
-FILE_COUNT = int(os.environ.get("FSQ_FILE_COUNT", "81"))
+HF_TOKEN = os.environ.get("FSQ_HF_TOKEN", "").strip()
+HF_DATASET = "foursquare/fsq-os-places"
 CUBA = (19.6, -85.1, 23.4, -74.0)  # sur, oeste, norte, este
 
 # Lo que no es un lugar al que ir, o ya viene de OpenStreetMap.
@@ -125,19 +125,47 @@ def meters(lat1, lon1, lat2, lon2):
     return math.hypot((lon2 - lon1) * 111_320 * math.cos(math.radians(lat1)), (lat2 - lat1) * 110_574)
 
 
-def foursquare_rows():
+def hugging_face(path):
+    import urllib.request
+
+    request = urllib.request.Request(f"https://huggingface.co/api/datasets/{HF_DATASET}/tree/main/{path}",
+                                     headers={"Authorization": f"Bearer {HF_TOKEN}"})
+    with urllib.request.urlopen(request, timeout=60) as response:
+        return [item["path"] for item in json.load(response)]
+
+
+def source():
+    """(versión, archivos, filtro extra). Los de Hugging Face van ordenados
+    por país y los de source.coop partidos por zonas: DuckDB solo baja los
+    trozos de Cuba."""
+    if HF_TOKEN:
+        release = os.environ.get("FSQ_RELEASE") or max(
+            path.split("dt=")[1] for path in hugging_face("release") if "dt=" in path)
+        files = [f"hf://datasets/{HF_DATASET}/{path}"
+                 for path in hugging_face(f"release/dt={release}/places/parquet") if path.endswith(".parquet")]
+        # Lo que la gente marcó en Foursquare como cerrado, repetido, privado…
+        return f"huggingface {release}", files, "AND coalesce(len(unresolved_flags), 0) = 0"
+    release = os.environ.get("FSQ_RELEASE", "2025-02-06")
+    files = [f"https://data.source.coop/fused/fsq-os-places/{release}/places/{index}.parquet" for index in range(81)]
+    return f"source.coop {release}", files, ""
+
+
+def foursquare_rows(release, files, extra):
     import duckdb
 
     con = duckdb.connect()
     con.execute("INSTALL httpfs; LOAD httpfs;")
-    files = [f"{SOURCE}/{index}.parquet" for index in range(FILE_COUNT)]
+    if HF_TOKEN:
+        con.execute(f"CREATE SECRET hf (TYPE huggingface, TOKEN '{HF_TOKEN}')")
     south, west, north, east = CUBA
-    return con.execute(f"""
+    rows = con.execute(f"""
         SELECT fsq_place_id, name, latitude, longitude, address, fsq_category_labels, date_refreshed
         FROM read_parquet({files})
-        WHERE latitude BETWEEN {south} AND {north} AND longitude BETWEEN {west} AND {east}
-          AND country = 'CU' AND date_closed IS NULL AND name IS NOT NULL
+        WHERE country = 'CU' AND latitude BETWEEN {south} AND {north} AND longitude BETWEEN {west} AND {east}
+          AND date_closed IS NULL AND name IS NOT NULL {extra}
     """).fetchall()
+    print(f"Foursquare ({release}): {len(rows)} lugares abiertos en Cuba")
+    return rows
 
 
 def wanted(rows, log):
@@ -176,7 +204,7 @@ def wanted(rows, log):
     return unique
 
 
-def merge(db, rows, log):
+def merge(db, rows, release, log):
     """Suma a `places` los que no están ya. Devuelve cuántos sumó."""
     # Lo que ya hay (sin calles ni cruces), en celdas de unos 280 m y, para
     # los lugares grandes, de unos 2,8 km. Los de categoría «address» son
@@ -240,7 +268,7 @@ def merge(db, rows, log):
         inserts,
     )
     db.execute("INSERT INTO places_fts(places_fts) VALUES('optimize')")
-    db.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES ('foursquare_release', ?)", (RELEASE,))
+    db.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES ('foursquare_release', ?)", (release,))
     db.execute("INSERT OR REPLACE INTO metadata (key, value) VALUES ('foursquare_places', ?)", (str(len(inserts)),))
     log(f"Foursquare: {len(inserts)} nuevos, {repeated} ya estaban")
     return len(inserts)
@@ -271,7 +299,8 @@ def main():
             # Otra versión de Foursquare encima de una que ya los tenía: se
             # quitan los de antes (los triggers limpian el índice).
             db.execute("DELETE FROM places WHERE id LIKE 'fsq-%'")
-        added = merge(db, wanted(foursquare_rows(), print), print)
+        release, files, extra = source()
+        added = merge(db, wanted(foursquare_rows(release, files, extra), print), release, print)
         db.commit()
         db.execute("VACUUM")
         db.close()
