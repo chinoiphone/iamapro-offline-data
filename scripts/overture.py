@@ -13,7 +13,8 @@ POI = 0
 
 
 def normalized(text):
-    text = (text or "").lower()
+    # Sin apóstrofes: «Joe's Pizza» y «Joes Pizza», «McDonald's» y «McDonalds».
+    text = re.sub(r"['’`]", "", (text or "").lower())
     text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
     skip = {"the", "el", "la", "los", "las", "of", "de", "del", "and", "y", "inc", "llc"}
     return " ".join(word for word in text.split() if word not in skip)
@@ -114,7 +115,15 @@ def merge(db, bounds, release, log=print):
           AND names.primary IS NOT NULL
     """).fetchall()
     log(f"Overture: {len(rows)} lugares en el área")
+    added, enriched = merge_rows(db, rows, "Overture", log)
+    return {"overture_added": added, "overture_enriched": enriched}
 
+
+def merge_rows(db, rows, label, log=print):
+    """Suma (o completa) a `places` las filas (nombre, categoría básica,
+    taxonomía, web, teléfono, dirección, ciudad, código postal, lat, lon) que
+    no estén ya: lo comparten Overture y Foursquare. Devuelve (nuevos,
+    completados)."""
     # Los lugares ya puestos (los de OpenStreetMap y los de Overture que se
     # van sumando, que también trae repetidos de distintas fuentes), en
     # celdas de unos 250 m. rowid None = uno de Overture recién sumado.
@@ -187,5 +196,5 @@ def merge(db, bounds, release, log=print):
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         inserts,
     )
-    log(f"Overture: {added} nuevos, {enriched} de OpenStreetMap completados")
-    return {"overture_added": added, "overture_enriched": enriched}
+    log(f"{label}: {added} nuevos, {enriched} de OpenStreetMap completados")
+    return added, enriched

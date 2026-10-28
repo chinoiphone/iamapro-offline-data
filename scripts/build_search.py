@@ -229,6 +229,15 @@ def main():
         counts.update(overture.merge(db, trimmed_bounds(latitudes, longitudes), release))
         db.commit()
 
+    # Los lugares de Foursquare (ver foursquare.py): con FSQ_US_PARQUET, el
+    # archivo que sacó el paso «Foursquare» de la acción.
+    foursquare_file = os.environ.get("FSQ_US_PARQUET")
+    if foursquare_file and os.path.exists(foursquare_file):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import foursquare
+        counts.update(foursquare.merge(db, trimmed_bounds(latitudes, longitudes), foursquare_file))
+        db.commit()
+
     db.executescript(
         """
         UPDATE places SET address = NULLIF(trim(coalesce(housenumber || ' ', '') || coalesce(street, '')), '');

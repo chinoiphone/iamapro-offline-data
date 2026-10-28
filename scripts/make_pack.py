@@ -55,6 +55,9 @@ def main():
     with open(os.path.join(pack, "NOTICE.txt"), "w", encoding="utf-8") as handle:
         handle.write("Datos © colaboradores de OpenStreetMap, licencia ODbL: "
                      "https://www.openstreetmap.org/copyright\n")
+        if os.environ.get("FSQ_US_PARQUET"):
+            handle.write("Lugares adicionales: FSQ Open Source Places © Foursquare Labs, Inc., "
+                         "licencia Apache 2.0: https://www.apache.org/licenses/LICENSE-2.0\n")
 
     with open(os.path.join(work, "stats.json"), encoding="utf-8") as handle:
         stats = json.load(handle)

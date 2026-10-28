@@ -7,6 +7,10 @@ on:
         description: "Estados con el nombre de Geofabrik, separados por coma (florida,new-york,california/norcal), o «all» para todos"
         required: true
         default: florida
+      foursquare:
+        description: "Sumar los lugares de Foursquare (necesita el secreto FSQ_HF_TOKEN)"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -24,8 +28,34 @@ jobs:
         run: |
           python3 -c "import json, os; raw = os.environ['STATES'].strip().lower(); s = [x.strip() for x in open('scripts/us-states.txt')] if raw == 'all' else [x.strip() for x in raw.split(',') if x.strip()]; print('states=' + json.dumps([x for x in s if x]))" >> "$GITHUB_OUTPUT"
 
-  build:
+  # Una sola vez: los lugares de Foursquare de EE. UU. (Hugging Face no filtra
+  # por zona; ver scripts/foursquare.py). Cada estado usa este resultado.
+  foursquare:
     needs: plan
+    if: ${{ inputs.foursquare }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sacar EE. UU. de Foursquare
+        env:
+          FSQ_HF_TOKEN: ${{ secrets.FSQ_HF_TOKEN }}
+        run: |
+          python3 -m pip install -q duckdb
+          python3 scripts/foursquare.py extract fsq-us.parquet
+          ls -la fsq-us.parquet fsq-us.parquet.release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foursquare-us
+          path: |
+            fsq-us.parquet
+            fsq-us.parquet.release
+          retention-days: 3
+          compression-level: 0
+
+  build:
+    needs: [plan, foursquare]
+    if: ${{ !cancelled() && needs.plan.result == 'success' && (needs.foursquare.result == 'success' || needs.foursquare.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     strategy:
@@ -39,8 +69,18 @@ jobs:
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/share/boost
           df -h /
+      - name: Lugares de Foursquare
+        if: ${{ needs.foursquare.result == 'success' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: foursquare-us
+          path: ${{ github.workspace }}/fsq
       - name: Herramientas
         run: |
+          if [ -f "$GITHUB_WORKSPACE/fsq/fsq-us.parquet" ]; then
+            echo "FSQ_US_PARQUET=$GITHUB_WORKSPACE/fsq/fsq-us.parquet" >> "$GITHUB_ENV"
+            echo "Foursquare $(cat "$GITHUB_WORKSPACE/fsq/fsq-us.parquet.release")"
+          fi
           sudo apt-get update -qq
           sudo apt-get install -y -qq osmium-tool
           python3 -m pip install -q duckdb
