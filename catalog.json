@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-26T20:22:01Z",
+  "updatedAt": "2026-10-28T12:51:54Z",
   "packs": [
     {
       "id": "us-alabama",
@@ -189,12 +189,12 @@
     {
       "id": "us-delaware",
       "name": "Delaware",
-      "version": "2026.10.26",
-      "tag": "us-delaware-2026.10.26",
-      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-delaware-2026.10.26/us-delaware.iamapack.zip",
-      "byteCount": 34397649,
-      "sha256": "195bafe09e0a76a2875ffe35548b04e93fdb5c2bd89611569610541ddac01cf6",
-      "installedByteCount": 91579719,
+      "version": "2026.10.28",
+      "tag": "us-delaware-2026.10.28",
+      "url": "https://github.com/chinoiphone/iamapro-offline-data/releases/download/us-delaware-2026.10.28/us-delaware.iamapack.zip",
+      "byteCount": 35702275,
+      "sha256": "2f6a74c21f80b023644b2651a7e75ba4b47a31cb673c9622a0d59c9111aabe3c",
+      "installedByteCount": 94948679,
       "bounds": {
         "minimumLatitude": 38.3326662,
         "minimumLongitude": -76.0501803,
@@ -202,11 +202,13 @@
         "maximumLongitude": -75.029972
       },
       "counts": {
-        "places": 17458,
+        "places": 17457,
         "streets": 27688,
-        "addresses": 61194,
-        "overture_added": 63304,
-        "overture_enriched": 4517
+        "addresses": 61204,
+        "overture_added": 63452,
+        "overture_enriched": 4530,
+        "foursquare_added": 12105,
+        "foursquare_enriched": 1794
       }
     },
     {
